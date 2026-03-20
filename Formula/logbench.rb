@@ -15,7 +15,7 @@ class Logbench < Formula
     # Generate SQL schema for first-run init
     system "bunx", "prisma", "migrate", "diff",
            "--from-empty",
-           "--to-schema-datamodel", "prisma/schema.prisma",
+           "--to-schema", "prisma/schema.prisma",
            "--script",
            "--output", "schema.sql"
 
