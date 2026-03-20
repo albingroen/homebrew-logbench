@@ -12,22 +12,12 @@ class Logbench < Formula
     system "bunx", "prisma", "generate"
     system "bun", "run", "build"
 
-    # Generate SQL schema for first-run init
-    system "bunx", "prisma", "migrate", "diff",
-           "--from-empty",
-           "--to-schema", "prisma/schema.prisma",
-           "--script",
-           "--output", "schema.sql"
-
-    # Write version marker
-    (buildpath/".logbench-version").write(version.to_s)
-
     # Copy native libsql binding into build output (not traced by Nitro)
     mkdir_p ".output/server/node_modules/@libsql"
     cp_r "node_modules/@libsql/darwin-arm64", ".output/server/node_modules/@libsql/"
 
     # Install to libexec (internal files, not in PATH)
-    libexec.install ".output", "schema.sql", ".logbench-version"
+    libexec.install ".output", "prisma"
 
     # Install launcher and fix libexec path
     bin.install "bin/logbench"
