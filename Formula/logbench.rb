@@ -43,11 +43,7 @@ class Logbench < Formula
     <<~EOS
       Logbench runs on http://localhost:1447 by default.
 
-      Configuration via environment variables:
-        LOGBENCH_PORT=8080        # Change port
-        LOGBENCH_DATA=/path/to   # Change data directory
-
-      Data is stored in ~/.local/share/logbench/ by default.
+      Data is stored in #{var}/logbench/.
 
       Start as a background service:
         brew services start logbench
