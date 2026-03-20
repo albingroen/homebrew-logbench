@@ -22,6 +22,10 @@ class Logbench < Formula
     # Write version marker
     (buildpath/".logbench-version").write(version.to_s)
 
+    # Copy native libsql binding into build output (not traced by Nitro)
+    mkdir_p ".output/server/node_modules/@libsql"
+    cp_r "node_modules/@libsql/darwin-arm64", ".output/server/node_modules/@libsql/"
+
     # Install to libexec (internal files, not in PATH)
     libexec.install ".output", "schema.sql", ".logbench-version"
 
