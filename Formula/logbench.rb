@@ -1,8 +1,8 @@
 class Logbench < Formula
   desc "Local log viewer and ingestion service"
   homepage "https://github.com/albingroen/logbench"
-  url "https://github.com/albingroen/logbench/archive/refs/tags/v0.1.0.tar.gz"
-  sha256 "f332f408f9f925765e53dbcc29cafe3ba5f59a1bcf57bdc13bb6ae7348b58f01"
+  url "https://github.com/albingroen/logbench/archive/refs/tags/v0.1.1.tar.gz"
+  sha256 "9e0d70cd61b494d65b51da4f8261de9f5b4123ee01fe0f716908a68047f49c3e"
   license "MIT"
 
   depends_on "bun"
