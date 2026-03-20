@@ -30,6 +30,9 @@ class Logbench < Formula
     inreplace bin/"logbench",
               '$(cd "$(dirname "$0")/../libexec" && pwd)',
               libexec.to_s
+    inreplace bin/"logbench",
+              "exec bun run",
+              "exec #{Formula["bun"].opt_bin}/bun run"
   end
 
   def caveats
