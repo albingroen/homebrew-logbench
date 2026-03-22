@@ -21,13 +21,6 @@ class Logbench < Formula
               "exec #{Formula["bun"].opt_bin}/bun run"
   end
 
-  def post_install
-    # Restart the service after upgrade so the new hashed assets are served
-    if quiet_system "/bin/launchctl", "list", "homebrew.mxcl.logbench"
-      system "brew", "services", "restart", "logbench"
-    end
-  end
-
   def caveats
     <<~EOS
       Logbench runs on http://localhost:1447 by default.
@@ -36,9 +29,6 @@ class Logbench < Formula
 
       Start as a background service:
         brew services start logbench
-
-      After upgrading, restart the service:
-        brew services restart logbench
     EOS
   end
 
