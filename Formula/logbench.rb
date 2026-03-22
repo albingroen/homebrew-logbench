@@ -36,6 +36,9 @@ class Logbench < Formula
 
       Start as a background service:
         brew services start logbench
+
+      After upgrading, restart the service:
+        brew services restart logbench
     EOS
   end
 
