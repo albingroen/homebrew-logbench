@@ -1,9 +1,9 @@
 class Logbench < Formula
   desc "Local log viewer and ingestion service"
   homepage "https://github.com/albingroen/logbench"
-  version "0.1.8"
-  url "https://github.com/albingroen/logbench/releases/download/v0.1.8/logbench-0.1.8-darwin-arm64.tar.gz"
-  sha256 "a59afcacb0692dbc5392bc5165aa82d1185682e3ee976945273a59d169a52f67"
+  version "0.1.9"
+  url "https://github.com/albingroen/logbench/releases/download/v0.1.9/logbench-0.1.9-darwin-arm64.tar.gz"
+  sha256 "5c45af85547e21164a1a2af1b7631480ea7890a3b577e4e0f2a0c9c6079c3197"
   license "MIT"
 
   depends_on "bun"
