@@ -1,25 +1,17 @@
 class Logbench < Formula
   desc "Local log viewer and ingestion service"
   homepage "https://github.com/albingroen/logbench"
+  version "0.1.5"
   url "https://github.com/albingroen/logbench/releases/download/v0.1.5/logbench-0.1.5-darwin-arm64.tar.gz"
   sha256 "5ff1eea1c9eaa921038cac894da8708481c53b130e292cb0d7a107c487f75698"
   license "MIT"
 
   depends_on "bun"
+  depends_on arch: :arm64
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-    system "bunx", "prisma", "generate"
-    system "bun", "run", "build"
+    libexec.install ".output", "prisma", ".logbench-version"
 
-    # Copy native libsql binding into build output (not traced by Nitro)
-    mkdir_p ".output/server/node_modules/@libsql"
-    cp_r "node_modules/@libsql/darwin-arm64", ".output/server/node_modules/@libsql/"
-
-    # Install to libexec (internal files, not in PATH)
-    libexec.install ".output", "prisma"
-
-    # Install launcher and fix libexec path
     bin.install "bin/logbench"
     inreplace bin/"logbench",
               '$(cd "$(dirname "$0")/../libexec" && pwd)',
